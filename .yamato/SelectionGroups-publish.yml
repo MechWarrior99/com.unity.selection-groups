@@ -108,11 +108,13 @@ debugging:
     
 
        unset GITHUB_TOKEN
-       gh auth logout --hostname github.com
        echo "Creating release $packageVer"
        echo "$GH_YAMATO_DEPLOYMENT" > token.txt
        gh auth login --hostname $hostName --with-token < token.txt 
        gh release create testRelease --title Test --notes "Test Release"  --prerelease --target $GIT_BRANCH --repo $ownerRepo
+
+       echo "$hostName/$ownerRepo"
+       gh auth login --hostname $hostName --with-token < token.txt 
        gh pr create --title "Pull request title" --body "Pull request body" --repo $hostName/$ownerRepo        
        
        
