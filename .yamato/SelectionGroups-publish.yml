@@ -79,7 +79,7 @@ debugging:
        
        hostName=`dirname $GIT_REPOSITORY_URL | cut -f1 -d":" | cut -f2 -d"@"`       
        ownerName=`dirname $GIT_REPOSITORY_URL | cut -f2 -d":"`       
-       repoName=`basename $GIT_REPOSITORY_URL | cut -f1 -d"."`
+       repoName=`basename $GIT_REPOSITORY_URL | sed "s/.git//"`
        
        ownerRepo="$ownerName/$repoName"
        
