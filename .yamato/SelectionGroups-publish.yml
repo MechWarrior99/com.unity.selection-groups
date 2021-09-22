@@ -77,12 +77,12 @@ debugging:
        
        hostName=`dirname $(git remote get-url origin --push) | xargs dirname | xargs basename`
        ownerName=`dirname $(git remote get-url origin --push) | xargs basename`
-       repoName=`basename $(git remote get-url origin --push)`
+       repoName=`basename $(git remote get-url origin --push) | cut -f1-3 -d"."`
        ownerRepo="$ownerName/$repoName"
        
        echo "Host: $hostName"
-       echo "Repo: $repoName"
        echo "Owner: $ownerName"
+       echo "Repo: $repoName"
        echo "OwnerRepo: $ownerRepo"
        
 
