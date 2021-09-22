@@ -78,11 +78,12 @@ debugging:
        hostName=`dirname $(git remote get-url origin) | cut -f1 -d":" | cut -f2 -d"@"`       
        repoName=`basename $(git remote get-url origin) | cut -f1 -d"."`
        ownerName=`dirname $(git remote get-url origin) | cut -f2 -d":"`       
-       ownerRepo="$ownerName/repoName"
+       ownerRepo="$ownerName/$repoName"
        
-       echo "$ownerRepo"
-       echo "$ownerRepo"
-       echo "$ownerRepo"
+       echo "Host: $hostName"
+       echo "Repo: $repoName"
+       echo "Owner: $ownerName"
+       echo "OwnerRepo: $ownerRepo"
        
 
        gitRemoteResult=`git remote -v`
