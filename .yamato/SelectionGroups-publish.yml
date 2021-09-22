@@ -69,6 +69,12 @@ debugging:
     flavor: b1.large
   commands:
     - |
+       ghAuthStatus=`gh auth status`
+       echo "gh already installed ?"
+       echo "$ghAuthStatus"
+       echo "$ghAuthStatus"
+       echo "$ghAuthStatus"
+
        gitRemoteResult=`git remote -v`
        pwdResult=`pwd`
        echo "$gitRemoteResult"
@@ -85,8 +91,9 @@ debugging:
        ghAuthStatus=`gh auth status`
        echo "$ghAuthStatus"
 
+    
 
-       unset GITHUB_TOKEN
+       gh auth logout --hostname github.com
        echo "Creating release $packageVer"
        echo "$GH_YAMATO_DEPLOYMENT" > token.txt
        gh auth login --hostname github.com --with-token < token.txt 
