@@ -115,7 +115,7 @@ debugging:
 
        echo "$hostName/$ownerRepo"
        gh auth login --hostname $hostName --with-token < token.txt 
-       gh pr create --title "Pull request title" --body "Pull request body" --repo $hostName/$ownerRepo        
+       gh pr create --title "Pull request title" --body "Pull request body" --repo $ownerRepo --head $GIT_BRANCH
        
        
 
