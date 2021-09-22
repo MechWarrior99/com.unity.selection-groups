@@ -69,13 +69,14 @@ debugging:
     flavor: b1.large
   commands:
     - |
-       ghAuthStatus=`gh auth status`
-       echo "gh already installed ?"
-       echo "$ghAuthStatus"
-       echo "$ghAuthStatus"
-       echo "$ghAuthStatus"
+       gitRemoteStatus=`git remote -v`
+       echo "$gitRemoteStatus"
+       echo "$gitRemoteStatus"
+       echo "$gitRemoteStatus"
        
        echo "Git repository URL: $GIT_REPOSITORY_URL"
+       
+       git remote add origin $GIT_REPOSITORY_URL
        
        hostName=`dirname $GIT_REPOSITORY_URL | cut -f1 -d":" | cut -f2 -d"@"`       
        ownerName=`dirname $GIT_REPOSITORY_URL | cut -f2 -d":"`       
@@ -115,6 +116,7 @@ debugging:
 
        echo "$hostName/$ownerRepo"
        gh auth logout --hostname $hostName
+       echo "exporting GH_HOST: $hostName"
        export GH_HOST=$hostName
        gh auth login --hostname $hostName --with-token < token.txt 
        gh pr create --title "Pull request title" --body "Pull request body" --repo $ownerRepo --head $GIT_BRANCH
