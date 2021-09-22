@@ -112,8 +112,8 @@ debugging:
        echo "Creating release $packageVer"
        echo "$GH_YAMATO_DEPLOYMENT" > token.txt
        gh auth login --hostname $hostName --with-token < token.txt 
-       gh pr create --title "Pull request title" --body "Pull request body" --repo $ownerRepo        
        gh release create testRelease --title Test --notes "Test Release"  --prerelease --target $GIT_BRANCH --repo $ownerRepo
+       gh pr create --title "Pull request title" --body "Pull request body" --repo $hostName/$ownerRepo        
        
        
 
