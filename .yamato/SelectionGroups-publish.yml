@@ -61,6 +61,22 @@ prerelease:
   dependencies:
     - .yamato/{{ yamato_name }}-publish.yml#publish
 
+debugging:
+  name: debugging {{ yamato_name }}  
+  agent:
+    type: Unity::VM
+    image: package-ci/ubuntu:stable
+    flavor: b1.large
+  commands:
+    - |
+       gitRemoteResult=`git remote -v`
+       pwdResult=`pwd`
+       echo "$gitRemoteResult"
+       echo "$pwdResult"
+       echo "$pwdResult"
+       echo "$pwdResult"
+       
+
     
 publish_dry_run:
   name: Publish Dry Run {{ yamato_name }} to Internal Registry
