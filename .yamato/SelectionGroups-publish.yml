@@ -114,6 +114,7 @@ debugging:
        gh release create testRelease --title Test --notes "Test Release"  --prerelease --target $GIT_BRANCH --repo $ownerRepo
 
        echo "$hostName/$ownerRepo"
+       gh auth logout --hostname github.com
        gh auth login --hostname $hostName --with-token < token.txt 
        gh pr create --title "Pull request title" --body "Pull request body" --repo $ownerRepo --head $GIT_BRANCH
        
