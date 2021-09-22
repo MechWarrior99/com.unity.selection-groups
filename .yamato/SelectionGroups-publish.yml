@@ -75,9 +75,9 @@ debugging:
        echo "$ghAuthStatus"
        echo "$ghAuthStatus"
        
-       hostName=`dirname $(git remote get-url origin) | cut -f1 -d":" | cut -f2 -d"@"`       
-       repoName=`basename $(git remote get-url origin) | cut -f1 -d"."`
-       ownerName=`dirname $(git remote get-url origin) | cut -f2 -d":"`       
+       hostName=`dirname $(git remote get-url origin --push) | xargs dirname | xargs basename`
+       ownerName=`dirname $(git remote get-url origin --push) | xargs basename`
+       repoName=`basename $(git remote get-url origin --push)`
        ownerRepo="$ownerName/$repoName"
        
        echo "Host: $hostName"
