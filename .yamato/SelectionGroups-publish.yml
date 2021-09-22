@@ -75,6 +75,9 @@ debugging:
        echo "$ghAuthStatus"
        echo "$ghAuthStatus"
        
+       echo "Git repository URL: $GIT_REPOSITORY_URL"
+       
+       
        hostName=`dirname $(git remote get-url origin --push) | xargs dirname | xargs basename`
        ownerName=`dirname $(git remote get-url origin --push) | xargs basename`
        repoName=`basename $(git remote get-url origin --push) | cut -f1-3 -d"."`
