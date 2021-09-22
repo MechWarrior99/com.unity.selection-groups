@@ -74,6 +74,16 @@ debugging:
        echo "$ghAuthStatus"
        echo "$ghAuthStatus"
        echo "$ghAuthStatus"
+       
+       hostName=`dirname $(git remote get-url origin) | cut -f1 -d":" | cut -f2 -d"@"`       
+       repoName=`basename $(git remote get-url origin) | cut -f1 -d"."`
+       ownerName=`dirname $(git remote get-url origin) | cut -f2 -d":"`       
+       ownerRepo="$ownerName/repoName"
+       
+       echo "$ownerRepo"
+       echo "$ownerRepo"
+       echo "$ownerRepo"
+       
 
        gitRemoteResult=`git remote -v`
        pwdResult=`pwd`
@@ -97,8 +107,8 @@ debugging:
        gh auth logout --hostname github.com
        echo "Creating release $packageVer"
        echo "$GH_YAMATO_DEPLOYMENT" > token.txt
-       gh auth login --hostname github.com --with-token < token.txt 
-       gh release create testRelease --title Test --notes "Test Release"  --prerelease --target $GIT_BRANCH --repo Unity-Technologies/com.unity.selection-groups
+       gh auth login --hostname $hostName --with-token < token.txt 
+       gh release create testRelease --title Test --notes "Test Release"  --prerelease --target $GIT_BRANCH --repo $ownerRepo
        
        
 
