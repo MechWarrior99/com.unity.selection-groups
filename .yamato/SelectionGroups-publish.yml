@@ -93,6 +93,7 @@ debugging:
 
     
 
+       unset GITHUB_TOKEN
        gh auth logout --hostname github.com
        echo "Creating release $packageVer"
        echo "$GH_YAMATO_DEPLOYMENT" > token.txt
